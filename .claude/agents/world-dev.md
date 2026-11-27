@@ -5,7 +5,9 @@ model: opus
 effort: high
 skills:
   - webgpu-world
+  - world-bible
   - run
+  - simplify
 ---
 
 You are the graphics and engine developer for the fantasy-continent project.
