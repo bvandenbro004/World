@@ -1,6 +1,6 @@
 # The Continent (fork of Abyssal Garden)
 
-A fantasy continent you can walk through in the browser, built region by region with Abyssal Garden's technique: WebGPU, no engine, everything procedural, one HTML file per region. Engine conventions: `.claude/skills/webgpu-world/SKILL.md`. World bible: `world/` (map, overview, regions, races, creatures).
+A fantasy continent you can walk through in the browser, built region by region with Abyssal Garden's technique: WebGPU, no engine, everything procedural, one HTML file per region. Engine conventions: `.claude/skills/webgpu-world/SKILL.md`. Architecture and decisions: `docs/architecture/`. World bible: `world/` (map, overview, regions, races, creatures).
 
 ## Planning: Jira
 - Site: brechtvandenbroeck8.atlassian.net, Kanban project **WORLD** ("Magical-World"). Conventions: `.claude/skills/jira-stories/SKILL.md`.
@@ -19,9 +19,10 @@ The master plans, talks with the user, updates Jira and `world/`, and delegates 
 ### Requirements first (every new epic, and any big new idea)
 1. `requirements-analyst` runs the `grill-me` interview: it returns a few questions at a time, the master asks the user, and feeds the answers back. The log lives in `world/requirements/<epic>.md`, so the interview can span many chats.
 2. When every branch is decided or parked, it writes the requirements and drafts the epic and stories. **The user approves the draft**, then it creates them in Jira.
+3. `architect`: feasibility check of the requirements, engine tasks needed, and proposed ADRs for big decisions. **The user accepts the ADRs.**
 
 ### For each story
-1. `world-designer`: region spec section and build spec with 6 fixed viewpoints, from the requirements. **The user approves it.**
+1. `world-designer`: region spec section and build spec with 6 fixed viewpoints, from the requirements. `architect` adds the implementation outline and budget. **The user approves it.**
 2. Branch `feature/<JIRA-KEY>-<short-name>` from `region/<name>`. Move the card to *In Progress*.
 3. `world-dev`: builds, screenshots, benchmarks.
 4. `visual-critic`: judges screenshots only. Send blockers/majors back to `world-dev`; loop until PASS.
